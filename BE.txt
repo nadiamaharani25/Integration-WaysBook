@@ -1,0 +1,60 @@
+npm i express
+npm i -D nodemon
+npm i mysql2
+npm i sequelize
+npm i sequelize-cli
+npm i bcrypt
+npm i dotenv
+npm i joi
+npm i jsonwebtoken
+npm i multer
+
+npx sequelize init
+
+npx sequelize-cli model:generate --name user --attributes email:string,password:string,name:string,status:string
+
+defaultValue: Sequelize.fn('now'),   (untuk createAt dan updateAt migrade user)
+
+npx sequelize db:migrate
+npx sequelize db:migrate:undo:all
+
+sequelize query {
+    where {
+        id : id 
+    }// menampilkan selector bedasarakan value yg di cari
+    attributes {
+        exclude : ["password","createAt","updateAt"]
+    }// untuk membuat data yang tidak mau kita tampilkan
+}
+
+npx sequelize-cli model:generate --name user --attributes name:string,email:string,password:string,status:string
+
+npx sequelize-cli model:generate --name profile --attributes phone:string,gender:string,address:text,idUser:integer
+
+npx sequelize-cli model:generate --name book --attributes title:string,publicationDate:date,pages:integer,author:string,isbn:integer,price:bigint,about:string,image:string,idUser:integer
+
+npx sequelize-cli model:generate --name transaction --attributes idBook:integer,idBuyer:integer,idSeller:integer,price:integer,status:string
+
+npx sequelize-cli model:generate --name chat --attributes message:string,idSender:integer,idRecipient:integer
+
+BelongTo dari table Parent ke table Child
+
+hasOne dari table Child ke table Parent
+
+hasMany dari satu ke banyak Parent ke Child // studi case 1 user memiliki banyak product
+
+ManyToMany untuk table yang mengunakan table bantuan atau jembatan
+
+
+error 
+400 terkait req routing
+
+
+integrasi axios
+- server
+npm i concurrently
+npm i cors
+
+- client
+npm install axios
+npm i react-query
